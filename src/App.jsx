@@ -35,13 +35,18 @@ const PremiumIndicatorChart = ({ indicator }) => {
   const isPositive = variance > 0;
 
   const renderCustomLabel = (props) => {
-    const { x, y, width, value } = props;
+    const { x, y, width, value, index } = props;
     if (value === null || value === undefined) return null;
+
+    // For the Meta line, only show at the start and end to avoid clutter
+    const isMetaLine = !width;
+    if (isMetaLine && index !== 0 && index !== 12) return null;
+
     return (
       <text
-        x={x + width / 2}
+        x={x + (width ? width / 2 : 0)}
         y={y - 12}
-        fill={hoveredIndex !== null ? "#3b82f6" : "#f8fafc"}
+        fill={isMetaLine ? "#10b981" : (hoveredIndex !== null ? "#3b82f6" : "#f8fafc")}
         textAnchor="middle"
         className="text-[10px] font-black tracking-tighter transition-colors duration-300"
       >
@@ -204,11 +209,14 @@ const PremiumIndicatorChart = ({ indicator }) => {
               type="monotone"
               dataKey="Meta"
               stroke="#10b981"
-              strokeWidth={4}
+              strokeWidth={3}
+              strokeDasharray="5 5"
               dot={false}
               filter="url(#glow)"
               animationDuration={3000}
-            />
+            >
+              <LabelList dataKey="Meta" content={renderCustomLabel} />
+            </Line>
           </ComposedChart>
         </ResponsiveContainer>
       </div>
