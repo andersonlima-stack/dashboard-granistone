@@ -12,10 +12,18 @@ import {
 import { dailyPerformance, topMaterials, kpis, indicatorsData, sectors } from './data';
 
 // A premium, highly aesthetic chart component
-const PremiumIndicatorChart = ({ title, sector, data, unit, meta }) => {
+const PremiumIndicatorChart = ({ indicator }) => {
+  const { title, sector, data, unit, meta, is_pct, is_brl, is_usd } = indicator;
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const isPercent = unit && typeof unit === 'string' && unit.includes('%');
-  const suffix = isPercent ? '%' : '';
+
+  const formatValue = (val) => {
+    if (val === null || val === undefined) return '-';
+    let formatted = val.toLocaleString();
+    if (is_pct) return `${formatted}%`;
+    if (is_brl) return `R$ ${formatted}`;
+    if (is_usd) return `US$ ${formatted}`;
+    return formatted;
+  };
 
   // Get current and previous period averages (MÉD is the last index)
   const medData = data && data.length > 0 ? data[data.length - 1] : {};
@@ -37,7 +45,7 @@ const PremiumIndicatorChart = ({ title, sector, data, unit, meta }) => {
         textAnchor="middle"
         className="text-[10px] font-black tracking-tighter transition-colors duration-300"
       >
-        {value.toLocaleString()}{suffix}
+        {formatValue(value)}
       </text>
     );
   };
@@ -59,21 +67,21 @@ const PremiumIndicatorChart = ({ title, sector, data, unit, meta }) => {
               <Activity size={12} className="text-emerald-500" /> Real-time Data
             </span>
           </div>
-          <h2 className="text-4xl font-black text-white tracking-tighter">
-            {title.split('(')[0]}
-            <span className="text-primary-light font-medium ml-2 opacity-50">({unit})</span>
+          <h2 className="text-4xl font-black text-white tracking-tighter leading-tight">
+            {title.split('(')[0].trim()}
+            {unit && <span className="text-primary-light font-medium ml-2 opacity-50">({unit})</span>}
           </h2>
         </div>
 
         <div className="flex gap-4">
           <div className="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-center">
             <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Meta 2025</p>
-            <p className="text-xl font-black text-emerald-400">{meta?.toLocaleString() || 'N/A'}{suffix} <span className="text-xs opacity-50">{unit}</span></p>
+            <p className="text-xl font-black text-emerald-400">{formatValue(meta)}</p>
           </div>
           <div className="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-center">
             <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Média 2025</p>
             <div className="flex items-center gap-2">
-              <p className="text-xl font-black text-white">{med2025?.toLocaleString() || '-'}{suffix}</p>
+              <p className="text-xl font-black text-white">{formatValue(med2025)}</p>
               {variance !== 0 && (
                 <span className={`flex items-center text-[10px] font-bold ${isPositive ? 'text-emerald-400' : 'text-rose-400'}`}>
                   {isPositive ? <ArrowUpRight size={12} /> : <TrendingDown size={12} />}
@@ -129,7 +137,7 @@ const PremiumIndicatorChart = ({ title, sector, data, unit, meta }) => {
               fontWeight="600"
               tickLine={false}
               axisLine={false}
-              tickFormatter={(v) => `${v}${suffix}`}
+              tickFormatter={(v) => is_pct ? `${v}%` : v}
               dx={-10}
             />
 
@@ -150,7 +158,7 @@ const PremiumIndicatorChart = ({ title, sector, data, unit, meta }) => {
                               <span className="text-white font-bold text-xs">{entry.name}</span>
                             </div>
                             <span className="text-white font-black text-sm">
-                              {entry.value ? entry.value.toLocaleString() : '-'}{suffix}
+                              {formatValue(entry.value)}
                             </span>
                           </div>
                         ))}
@@ -291,11 +299,7 @@ function App() {
               filteredIndicators.map((indicator, index) => (
                 <PremiumIndicatorChart
                   key={`${selectedSector}-${index}`}
-                  title={indicator.title}
-                  sector={indicator.sector}
-                  data={indicator.data}
-                  unit={indicator.unit}
-                  meta={indicator.meta || 0}
+                  indicator={indicator}
                 />
               ))
             ) : (

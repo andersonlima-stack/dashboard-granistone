@@ -5,6 +5,9 @@ export const indicatorsData = [
         "title": "m² Produzido",
         "sector": "Beneficiamento",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -91,6 +94,9 @@ export const indicatorsData = [
         "title": "Perda de Material (Custo até a perda na produção)",
         "sector": "Beneficiamento",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -177,6 +183,9 @@ export const indicatorsData = [
         "title": "Custo de Produção - Custo Total",
         "sector": "Beneficiamento",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -263,6 +272,9 @@ export const indicatorsData = [
         "title": "Custo de Produção - ES",
         "sector": "Beneficiamento",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -349,6 +361,9 @@ export const indicatorsData = [
         "title": "Custo de Produção - Custo Total",
         "sector": "Beneficiamento",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -435,6 +450,9 @@ export const indicatorsData = [
         "title": "Custo de Produção - ES",
         "sector": "Beneficiamento",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -521,6 +539,9 @@ export const indicatorsData = [
         "title": "Quantidade de chapas retrabalhadas",
         "sector": "Beneficiamento",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -607,6 +628,9 @@ export const indicatorsData = [
         "title": "Custo de Retrabalho",
         "sector": "Beneficiamento",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -693,6 +717,9 @@ export const indicatorsData = [
         "title": "Produtividade Bruta do Polimento",
         "sector": "Beneficiamento",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -779,6 +806,9 @@ export const indicatorsData = [
         "title": "Produtividade Líquida do Polimento",
         "sector": "Beneficiamento",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -865,6 +895,9 @@ export const indicatorsData = [
         "title": "Produtividade Bruta da Resinagem",
         "sector": "Beneficiamento",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -951,6 +984,9 @@ export const indicatorsData = [
         "title": "Produtividade Líquida da Resinagem",
         "sector": "Beneficiamento",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -1037,6 +1073,9 @@ export const indicatorsData = [
         "title": "Produção Amazonita",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -1123,6 +1162,9 @@ export const indicatorsData = [
         "title": "Recuperação Amazonita",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -1209,6 +1251,9 @@ export const indicatorsData = [
         "title": "Custo de Produção Amazonita",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -1295,6 +1340,9 @@ export const indicatorsData = [
         "title": "Cumprimento de Planejamento de Produção Amazonita",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -1381,6 +1429,9 @@ export const indicatorsData = [
         "title": "Disponibilidade de Equipamentos Vieirópolis",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -1467,6 +1518,9 @@ export const indicatorsData = [
         "title": "Produção Capolavoro",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -1553,6 +1607,9 @@ export const indicatorsData = [
         "title": "Recuperação Capolavoro",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -1639,6 +1696,9 @@ export const indicatorsData = [
         "title": "Custo de Produção Capolavoro",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -1725,6 +1785,9 @@ export const indicatorsData = [
         "title": "Cumprimento de Planejamento de Produção Capolavoro",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -1811,6 +1874,9 @@ export const indicatorsData = [
         "title": "Disponibilidade de equipamentos Pio IX",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -1897,6 +1963,9 @@ export const indicatorsData = [
         "title": "Produção Crystalline Ice",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -1983,6 +2052,9 @@ export const indicatorsData = [
         "title": "Recuperação Crystalline Ice",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -2069,6 +2141,9 @@ export const indicatorsData = [
         "title": "Custo de Produção Crystalline Ice",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -2155,6 +2230,9 @@ export const indicatorsData = [
         "title": "Cumprimento de Planejamento de Produção Crystalline Ice",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -2241,6 +2319,9 @@ export const indicatorsData = [
         "title": "Disponibilidade de equipamentos Santa Quitéria",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -2327,6 +2408,9 @@ export const indicatorsData = [
         "title": "Produção Speranza",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -2413,6 +2497,9 @@ export const indicatorsData = [
         "title": "Recuperação Speranza",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -2499,6 +2586,9 @@ export const indicatorsData = [
         "title": "Custo de Produção Speranza",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -2585,6 +2675,9 @@ export const indicatorsData = [
         "title": "Cumprimento de Planejamento de Produção Speranza",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -2671,6 +2764,9 @@ export const indicatorsData = [
         "title": "Produção Panda Sunset",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -2757,6 +2853,9 @@ export const indicatorsData = [
         "title": "Recuperação Panda Sunset",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -2843,6 +2942,9 @@ export const indicatorsData = [
         "title": "Custo de Produção Panda Sunset",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -2929,6 +3031,9 @@ export const indicatorsData = [
         "title": "Cumprimento de Planejamento de Produção Panda Sunset",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -3015,6 +3120,9 @@ export const indicatorsData = [
         "title": "Produção Paladio",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -3101,6 +3209,9 @@ export const indicatorsData = [
         "title": "Recuperação Paladio",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -3187,6 +3298,9 @@ export const indicatorsData = [
         "title": "Custo de Produção Paladio",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -3273,6 +3387,9 @@ export const indicatorsData = [
         "title": "Cumprimento de Planejamento de Produção Paladio",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -3359,6 +3476,9 @@ export const indicatorsData = [
         "title": "Produção Amazon River - INATIVO",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -3445,6 +3565,9 @@ export const indicatorsData = [
         "title": "Recuperação Amazon River - INATIVO",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -3531,6 +3654,9 @@ export const indicatorsData = [
         "title": "Custo de Produção Amazon River - INATIVO",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -3617,6 +3743,9 @@ export const indicatorsData = [
         "title": "Cumprimento de Planejamento de Produção Amazon River - INATIVO",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -3703,6 +3832,9 @@ export const indicatorsData = [
         "title": "Produção do Presidence",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -3789,6 +3921,9 @@ export const indicatorsData = [
         "title": "Recuperação do Presidence",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -3875,6 +4010,9 @@ export const indicatorsData = [
         "title": "Custo de Produção do Presidence",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -3961,6 +4099,9 @@ export const indicatorsData = [
         "title": "Cumprimento de Planejamento de Produção do Presidence",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -4047,6 +4188,9 @@ export const indicatorsData = [
         "title": "Produção Melrose",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -4133,6 +4277,9 @@ export const indicatorsData = [
         "title": "Recuperação Melrose",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -4219,6 +4366,9 @@ export const indicatorsData = [
         "title": "Custo de Produção Melrose",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -4305,6 +4455,9 @@ export const indicatorsData = [
         "title": "Cumprimento de Planejamento de Produção Melrose",
         "sector": "Minas",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -4391,6 +4544,9 @@ export const indicatorsData = [
         "title": "Qtd. de Áreas Visitadas",
         "sector": "Pesquisa",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -4477,6 +4633,9 @@ export const indicatorsData = [
         "title": "Qtd. de Processos Minerários em Fase de Pesquisa (ANM) ",
         "sector": "Pesquisa",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -4563,6 +4722,9 @@ export const indicatorsData = [
         "title": "Qtd. de Processos Minerários com Pesquisa em Andamento",
         "sector": "Pesquisa",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -4649,6 +4811,9 @@ export const indicatorsData = [
         "title": "Qtd de Novas Áreas Requeridas no Mês",
         "sector": "Pesquisa",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -4735,6 +4900,9 @@ export const indicatorsData = [
         "title": "Taxa de Ocupação (Container)",
         "sector": "Comércio Exterior",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -4821,6 +4989,9 @@ export const indicatorsData = [
         "title": "Custo FOB /M² - Chapas (ES)",
         "sector": "Comércio Exterior",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -4907,6 +5078,9 @@ export const indicatorsData = [
         "title": "Custo FOB /M³ - Blocos (Pionix)",
         "sector": "Comércio Exterior",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -4993,6 +5167,9 @@ export const indicatorsData = [
         "title": "Custo FOB /TON - Blocos (Amazon)",
         "sector": "Comércio Exterior",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -5079,6 +5256,9 @@ export const indicatorsData = [
         "title": "Custo FOB/TON - Bloquetes - INATIVO",
         "sector": "Comércio Exterior",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -5165,6 +5345,9 @@ export const indicatorsData = [
         "title": "Custo FOB /TON - Gravel ",
         "sector": "Comércio Exterior",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -5251,6 +5434,9 @@ export const indicatorsData = [
         "title": "Faturamento Total",
         "sector": "Comercial",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -5337,6 +5523,9 @@ export const indicatorsData = [
         "title": "Percentual de Faturamento por Contrato vs Faturamento Total",
         "sector": "Comercial",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -5423,6 +5612,9 @@ export const indicatorsData = [
         "title": "Preço Médio de Blocos Amazonita",
         "sector": "Comercial",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -5509,6 +5701,9 @@ export const indicatorsData = [
         "title": "Preço Médio de Chapas de Amazonita",
         "sector": "Comercial",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -5595,6 +5790,9 @@ export const indicatorsData = [
         "title": "Turnover",
         "sector": "RH",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -5681,6 +5879,9 @@ export const indicatorsData = [
         "title": "Lead Time de Contratação",
         "sector": "RH",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -5767,6 +5968,9 @@ export const indicatorsData = [
         "title": "Média da Avaliação da empresa em entrevistas de desligamento",
         "sector": "RH",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -5853,6 +6057,9 @@ export const indicatorsData = [
         "title": "Absenteísmo",
         "sector": "RH",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -5939,6 +6146,9 @@ export const indicatorsData = [
         "title": "Faturamento Real x Orçado",
         "sector": "Financeiro",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -6025,6 +6235,9 @@ export const indicatorsData = [
         "title": "Gasto Real x Orçado",
         "sector": "Financeiro",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -6111,6 +6324,9 @@ export const indicatorsData = [
         "title": "Valor nominal gasto com demissões x Faturamento",
         "sector": "DP",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -6197,6 +6413,9 @@ export const indicatorsData = [
         "title": "Horas Extras x Folha da Pagamento",
         "sector": "DP",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -6283,6 +6502,9 @@ export const indicatorsData = [
         "title": "Custo com Pessoal x Faturamento",
         "sector": "DP",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -6369,6 +6591,9 @@ export const indicatorsData = [
         "title": "Satisfação de Clientes",
         "sector": "T.I",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -6455,6 +6680,9 @@ export const indicatorsData = [
         "title": "Demanda Estratégicas Atendidas no Prazo",
         "sector": "T.I",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -6541,6 +6769,9 @@ export const indicatorsData = [
         "title": "Demanda Operacionais Atendidas no Prazo de 7 dias",
         "sector": "T.I",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -6627,6 +6858,9 @@ export const indicatorsData = [
         "title": "Demandas de Geração de Relatórios no TopManager, atendidos no Prazo",
         "sector": "T.I",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -6713,6 +6947,9 @@ export const indicatorsData = [
         "title": "Demandas de Geração de Estruturas de Dados para BI cumpridas no Prazo acordado",
         "sector": "T.I",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -6799,6 +7036,9 @@ export const indicatorsData = [
         "title": "Custo de Aquisição ",
         "sector": "Compras",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -6885,6 +7125,9 @@ export const indicatorsData = [
         "title": "Acuracidade de Estoque",
         "sector": "Compras",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -6970,7 +7213,10 @@ export const indicatorsData = [
     {
         "title": "% de Cadastro de Objetos no Prazo",
         "sector": "Compras",
-        "unit": "%",
+        "unit": "",
+        "is_pct": true,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -7056,7 +7302,10 @@ export const indicatorsData = [
     {
         "title": "Saving de Compras (%)",
         "sector": "Compras",
-        "unit": "%",
+        "unit": "",
+        "is_pct": true,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -7142,7 +7391,10 @@ export const indicatorsData = [
     {
         "title": "Lead Time de Atendimento de Solicitação de Compra (%)",
         "sector": "Compras",
-        "unit": "%",
+        "unit": "",
+        "is_pct": true,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -7228,7 +7480,10 @@ export const indicatorsData = [
     {
         "title": "Lead Time do Fornecedor (%)",
         "sector": "Compras",
-        "unit": "%",
+        "unit": "",
+        "is_pct": true,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -7315,6 +7570,9 @@ export const indicatorsData = [
         "title": "CAC (Custo de aquisição por clientes)",
         "sector": "Marketing",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -7401,6 +7659,9 @@ export const indicatorsData = [
         "title": "Quantidade de leads gerados",
         "sector": "Marketing",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -7487,6 +7748,9 @@ export const indicatorsData = [
         "title": "Quantidade de leads qualificados",
         "sector": "Marketing",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -7573,6 +7837,9 @@ export const indicatorsData = [
         "title": "ROI",
         "sector": "Marketing",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -7659,6 +7926,9 @@ export const indicatorsData = [
         "title": "Conformidade dos Processos Organizacionais",
         "sector": "Controladoria",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -7745,6 +8015,9 @@ export const indicatorsData = [
         "title": "Conformidade dos PRIs das áreas",
         "sector": "Controladoria",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -7831,6 +8104,9 @@ export const indicatorsData = [
         "title": "Conformidade do Modelo de Gestão das Áreas",
         "sector": "Controladoria",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
@@ -7917,6 +8193,9 @@ export const indicatorsData = [
         "title": "Conformidade do Acordo entre as Áreas",
         "sector": "Controladoria",
         "unit": "",
+        "is_pct": false,
+        "is_brl": false,
+        "is_usd": false,
         "meta": null,
         "data": [
             {
