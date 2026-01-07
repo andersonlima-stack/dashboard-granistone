@@ -21,7 +21,8 @@ const PremiumIndicatorChart = ({ indicator, selectedYears }) => {
 
   const formatValue = (val) => {
     if (val === null || val === undefined) return '-';
-    let formatted = val.toLocaleString();
+    // Use 2 decimal places for better uniformity
+    let formatted = val.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
     if (is_pct) return `${formatted}%`;
     if (is_brl) return `R$ ${formatted}`;
     if (is_usd) return `US$ ${formatted}`;
@@ -58,16 +59,19 @@ const PremiumIndicatorChart = ({ indicator, selectedYears }) => {
     );
   };
 
+  // Clean title: remove anything in parentheses or brackets
+  const cleanTitle = title.split('(')[0].split('[')[0].trim();
+
   return (
-    <div className="relative group overflow-hidden rounded-[2.5rem] bg-[#0f172a]/40 border border-white/5 backdrop-blur-3xl p-8 transition-all duration-500 hover:shadow-[0_0_50px_-12px_rgba(59,130,246,0.15)] hover:border-primary/20">
+    <div className="relative group overflow-hidden rounded-[2.5rem] bg-[#0f172a]/40 border border-white/5 backdrop-blur-3xl p-10 transition-all duration-500 hover:shadow-[0_0_50px_-12px_rgba(59,130,246,0.15)] hover:border-primary/20">
       {/* Decorative background blurs */}
       <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-primary/5 rounded-full blur-[100px] pointer-events-none group-hover:bg-primary/10 transition-colors duration-500" />
       <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none group-hover:bg-emerald-500/10 transition-colors duration-500" />
 
       {/* Header */}
-      <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
-        <div>
-          <div className="flex items-center gap-2 mb-2">
+      <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-12">
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-3">
             <span className="px-3 py-1 rounded-full bg-primary/10 text-primary-light text-[10px] font-black uppercase tracking-widest border border-primary/20">
               {sector}
             </span>
@@ -75,25 +79,24 @@ const PremiumIndicatorChart = ({ indicator, selectedYears }) => {
               <Activity size={12} className="text-emerald-500" /> Real-time Data
             </span>
           </div>
-          <h2 className="text-4xl font-black text-white tracking-tighter leading-tight">
-            {title.split('(')[0].trim()}
-            {unit && <span className="text-primary-light font-medium ml-2 opacity-50">({unit})</span>}
+          <h2 className="text-4xl xl:text-5xl font-black text-white tracking-tighter leading-[1.1] break-words">
+            {cleanTitle}
           </h2>
         </div>
 
-        <div className="flex gap-4">
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-center min-w-[100px]">
-            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Unidade</p>
-            <p className="text-xl font-black text-primary-light">
+        <div className="flex flex-wrap sm:flex-nowrap gap-4 flex-shrink-0">
+          <div className="p-5 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-center min-w-[110px] h-[90px]">
+            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1 opacity-70">Unidade</p>
+            <p className="text-xl font-black text-primary-light truncate">
               {is_pct ? '%' : is_brl ? 'R$' : is_usd ? 'US$' : (unit && unit !== 'None' ? unit : '-')}
             </p>
           </div>
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-center min-w-[100px]">
-            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Meta 2025</p>
+          <div className="p-5 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-center min-w-[110px] h-[90px]">
+            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1 opacity-70">Meta 2025</p>
             <p className="text-xl font-black text-emerald-400">{formatValue(meta)}</p>
           </div>
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-center min-w-[120px]">
-            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Média 2025</p>
+          <div className="p-5 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-center min-w-[140px] h-[90px]">
+            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1 opacity-70">Média 2025</p>
             <div className="flex items-center gap-2">
               <p className="text-xl font-black text-white">{formatValue(med2025)}</p>
               {variance !== 0 && (
@@ -257,7 +260,6 @@ const PremiumIndicatorChart = ({ indicator, selectedYears }) => {
 // Main Dashboard Shell
 function App() {
   const [selectedSector, setSelectedSector] = useState(sectors[0] || 'Beneficiamento');
-  const [showKPIs, setShowKPIs] = useState(false);
   const [selectedYears, setSelectedYears] = useState(['2024', '2025']);
   const [allIndicators, setAllIndicators] = useState(indicatorsData);
   const [allSectors, setAllSectors] = useState(sectors);
@@ -318,7 +320,6 @@ function App() {
               value={selectedSector}
               onChange={(e) => {
                 setSelectedSector(e.target.value);
-                setShowKPIs(false);
               }}
               className="bg-transparent border-none text-[11px] font-black uppercase tracking-widest focus:ring-0 cursor-pointer outline-none min-w-[140px]"
             >
@@ -342,12 +343,6 @@ function App() {
               <option value="2024" className="bg-[#0f172a]">Apenas 2024</option>
             </select>
           </div>
-          <button
-            onClick={() => setShowKPIs(!showKPIs)}
-            className={`flex items-center gap-3 px-8 py-3 rounded-[1.5rem] text-[11px] font-black uppercase tracking-widest transition-all duration-500 ${showKPIs ? 'bg-primary text-white' : 'text-slate-400 hover:text-white'}`}
-          >
-            <Activity size={18} /> {showKPIs ? 'Ver Gráficos' : 'Ver KPIs'}
-          </button>
         </div>
 
         <button
@@ -369,39 +364,21 @@ function App() {
 
       {/* Content Area */}
       <main className="relative z-20 max-w-7xl mx-auto space-y-12">
-        {!showKPIs ? (
-          <div className="grid grid-cols-1 gap-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-            {filteredIndicators.length > 0 ? (
-              filteredIndicators.map((indicator, index) => (
-                <PremiumIndicatorChart
-                  key={`${selectedSector}-${index}`}
-                  indicator={indicator}
-                  selectedYears={selectedYears}
-                />
-              ))
-            ) : (
-              <div className="text-center py-20 bg-white/5 rounded-[2.5rem] border border-white/5">
-                <p className="text-slate-500 uppercase tracking-widest font-black">Nenhum dado encontrado para este setor</p>
-              </div>
-            )}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-            {kpis.map((kpi, i) => (
-              <div key={i} className="glass-card p-10 rounded-[2rem] border border-white/5 relative group hover:border-primary/30 transition-all duration-500">
-                <div className="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 transition-opacity">
-                  <Activity className="text-primary-light" size={24} />
-                </div>
-                <p className="text-xs font-black text-slate-500 uppercase tracking-widest mb-2">{kpi.label}</p>
-                <h3 className="text-3xl font-black text-white">{kpi.value}</h3>
-                <div className={`flex items-center gap-1 mt-4 text-[10px] font-black ${kpi.tendance === 'up' ? 'text-emerald-400' : 'text-rose-400'}`}>
-                  {kpi.tendance === 'up' ? <ArrowUpRight size={14} /> : <TrendingDown size={14} />}
-                  <span>{kpi.change} VS MÊS ANTERIOR</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 gap-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          {filteredIndicators.length > 0 ? (
+            filteredIndicators.map((indicator, index) => (
+              <PremiumIndicatorChart
+                key={`${selectedSector}-${index}`}
+                indicator={indicator}
+                selectedYears={selectedYears}
+              />
+            ))
+          ) : (
+            <div className="text-center py-20 bg-white/5 rounded-[2.5rem] border border-white/5">
+              <p className="text-slate-500 uppercase tracking-widest font-black">Nenhum dado encontrado para este setor</p>
+            </div>
+          )}
+        </div>
       </main>
 
       <footer className="relative z-20 mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-slate-600 text-[10px] font-black uppercase tracking-[0.6em] pb-12">

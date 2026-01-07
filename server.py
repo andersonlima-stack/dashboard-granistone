@@ -49,9 +49,12 @@ def get_data():
             unit_val = str(row.get(unit_col) or "").strip()
             if unit_val.lower() == "nan" or unit_val == "None": unit_val = ""
             
+            unit_upper = unit_val.upper()
+            title_upper = title.upper()
+            
             is_pct = "%" in title or "%" in unit_val
-            is_brl = "R$" in unit_val or "R$" in title or "REAL" in unit_val.upper() or "VALOR" in title.upper()
-            is_usd = "US$" in unit_val or "USD" in unit_val or "DOLAR" in unit_val or "DÓLAR" in unit_val
+            is_brl = "R$" in unit_upper or "R$" in title_upper or "REAL" in unit_upper or "VALOR" in title_upper
+            is_usd = "US$" in unit_upper or "USD" in unit_upper or "DOLAR" in unit_upper or "DÓLAR" in unit_upper
             
             raw_meta = row.get(str(meta_col))
             meta_val = clean_val(raw_meta, is_pct)
