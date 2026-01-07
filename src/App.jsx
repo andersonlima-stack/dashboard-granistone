@@ -11,6 +11,79 @@ import {
 } from 'lucide-react';
 import { dailyPerformance, topMaterials, kpis, indicatorsData, sectors } from './data';
 
+const LoginScreen = ({ onLogin }) => {
+  const [key, setKey] = useState('');
+  const [error, setError] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (key.toLowerCase() === 'granistone2026') {
+      onLogin();
+    } else {
+      setError(true);
+      setTimeout(() => setError(false), 2000);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#020617] p-6 selection:bg-primary selection:text-white">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[150px]" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[150px]" />
+      </div>
+
+      <div className="relative z-10 w-full max-w-md animate-in fade-in zoom-in duration-700">
+        <div className="bg-[#0f172a]/80 backdrop-blur-2xl p-12 rounded-[3.5rem] border border-white/10 text-center shadow-3xl">
+          <div className="flex justify-center mb-10">
+            <div className="w-20 h-20 bg-gradient-to-br from-primary via-primary to-primary-light rounded-[1.5rem] flex items-center justify-center shadow-[0_0_40px_rgba(59,130,246,0.5)] rotate-3">
+              <Activity size={40} className="text-white -rotate-3" />
+            </div>
+          </div>
+
+          <h1 className="text-3xl font-black text-white uppercase tracking-tighter mb-2 italic">
+            GRANISTONE <span className="text-primary-light not-italic">INTELLIGENCE</span>
+          </h1>
+          <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em] mb-12 opacity-60">Portal de Acesso Restrito</p>
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="relative overflow-hidden rounded-2xl">
+              <input
+                type="password"
+                value={key}
+                autoFocus
+                onChange={(e) => setKey(e.target.value)}
+                placeholder="Chave de Acesso"
+                className={`w-full bg-white/5 border ${error ? 'border-rose-500 shadow-[0_0_25px_rgba(244,63,94,0.2)]' : 'border-white/10 focus:border-primary/50'} py-6 px-4 rounded-2xl text-white text-center font-black uppercase tracking-[0.4em] outline-none transition-all duration-500 placeholder:text-slate-700 placeholder:tracking-widest text-lg`}
+              />
+              {error && (
+                <div className="mt-4 animate-bounce">
+                  <p className="text-[10px] font-black text-rose-500 uppercase tracking-widest">Acesso Negado</p>
+                </div>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-primary hover:bg-primary-light text-white font-black uppercase tracking-widest py-6 rounded-2xl transition-all duration-500 shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] active:scale-[0.97] group"
+            >
+              <span className="flex items-center justify-center gap-3">
+                Sincronizar Acesso
+              </span>
+            </button>
+          </form>
+
+          <div className="mt-14 pt-10 border-t border-white/5">
+            <p className="text-[9px] font-bold text-slate-600 uppercase tracking-[0.3em] leading-loose">
+              Copyright © 2026 Granistone Industrial<br />
+              Production Control Division &bull; v4.12.0
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // A premium, highly aesthetic chart component
 const PremiumIndicatorChart = ({ indicator, selectedYears }) => {
   const { title, sector, data, unit, meta, is_pct, is_brl, is_usd } = indicator;
@@ -259,16 +332,28 @@ const PremiumIndicatorChart = ({ indicator, selectedYears }) => {
 
 // Main Dashboard Shell
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('gs_auth') === 'true');
   const [selectedSector, setSelectedSector] = useState(sectors[0] || 'Beneficiamento');
   const [selectedYears, setSelectedYears] = useState(['2024', '2025']);
   const [allIndicators, setAllIndicators] = useState(indicatorsData);
   const [allSectors, setAllSectors] = useState(sectors);
   const [isSyncing, setIsSyncing] = useState(false);
 
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+    localStorage.setItem('gs_auth', 'true');
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem('gs_auth');
+  };
+
   const fetchData = async () => {
+    const API_URL = 'http://localhost:5000/api/data';
     setIsSyncing(true);
     try {
-      const response = await fetch('http://localhost:5000/api/data');
+      const response = await fetch(API_URL);
       if (response.ok) {
         const result = await response.json();
         setAllIndicators(result.indicatorsData);
@@ -292,6 +377,10 @@ function App() {
   }, []);
 
   const filteredIndicators = allIndicators.filter(ind => ind.sector === selectedSector);
+
+  if (!isAuthenticated) {
+    return <LoginScreen onLogin={handleLogin} />;
+  }
 
   return (
     <div className="min-h-screen bg-[#020617] text-slate-50 p-6 lg:p-12 font-sans selection:bg-primary selection:text-white">
@@ -359,6 +448,14 @@ function App() {
               {isSyncing ? 'SINCRONIZANDO...' : 'ATUALIZAR AGORA'}
             </span>
           </div>
+        </button>
+
+        <button
+          onClick={handleLogout}
+          className="p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-rose-500/10 hover:border-rose-500/20 text-slate-500 hover:text-rose-400 transition-all group"
+          title="Sair do Sistema"
+        >
+          <Settings size={20} className="group-hover:rotate-90 transition-transform duration-500" />
         </button>
       </header>
 
