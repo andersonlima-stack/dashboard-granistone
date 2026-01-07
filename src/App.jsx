@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Cell, Legend, ComposedChart,
@@ -7,14 +7,17 @@ import {
 import {
   TrendingUp, TrendingDown, DollarSign, Package,
   Users, BarChart3, Layers, Settings, Maximize2,
-  Activity, ArrowUpRight, Calendar
+  Activity, ArrowUpRight, Calendar, RefreshCw
 } from 'lucide-react';
 import { dailyPerformance, topMaterials, kpis, indicatorsData, sectors } from './data';
 
 // A premium, highly aesthetic chart component
-const PremiumIndicatorChart = ({ indicator }) => {
+const PremiumIndicatorChart = ({ indicator, selectedYears }) => {
   const { title, sector, data, unit, meta, is_pct, is_brl, is_usd } = indicator;
   const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  const show2024 = selectedYears.includes('2024');
+  const show2025 = selectedYears.includes('2025');
 
   const formatValue = (val) => {
     if (val === null || val === undefined) return '-';
@@ -79,11 +82,17 @@ const PremiumIndicatorChart = ({ indicator }) => {
         </div>
 
         <div className="flex gap-4">
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-center">
+          <div className="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-center min-w-[100px]">
+            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Unidade</p>
+            <p className="text-xl font-black text-primary-light">
+              {is_pct ? '%' : is_brl ? 'R$' : is_usd ? 'US$' : (unit && unit !== 'None' ? unit : '-')}
+            </p>
+          </div>
+          <div className="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-center min-w-[100px]">
             <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Meta 2025</p>
             <p className="text-xl font-black text-emerald-400">{formatValue(meta)}</p>
           </div>
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-center">
+          <div className="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-center min-w-[120px]">
             <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Média 2025</p>
             <div className="flex items-center gap-2">
               <p className="text-xl font-black text-white">{formatValue(med2025)}</p>
@@ -182,38 +191,42 @@ const PremiumIndicatorChart = ({ indicator }) => {
               wrapperStyle={{ paddingBottom: '30px', fontSize: '11px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}
             />
 
-            <Bar
-              name="Realizado 2024"
-              dataKey="2024"
-              fill="url(#barGradient2024)"
-              radius={[6, 6, 0, 0]}
-              barSize={18}
-              animationDuration={1500}
-            >
-              <LabelList dataKey="2024" content={renderCustomLabel} />
-            </Bar>
+            {show2024 && (
+              <Bar
+                name="Realizado 2024"
+                dataKey="2024"
+                fill="url(#barGradient2024)"
+                radius={[6, 6, 0, 0]}
+                barSize={show2025 ? 18 : 30}
+                animationDuration={1500}
+              >
+                <LabelList dataKey="2024" content={renderCustomLabel} />
+              </Bar>
+            )}
 
-            <Bar
-              name="Realizado 2025"
-              dataKey="2025"
-              fill="url(#barGradient2025)"
-              radius={[6, 6, 0, 0]}
-              barSize={18}
-              animationDuration={2000}
-            >
-              <LabelList dataKey="2025" content={renderCustomLabel} />
-            </Bar>
+            {show2025 && (
+              <Bar
+                name="Realizado 2025"
+                dataKey="2025"
+                fill="url(#barGradient2025)"
+                radius={[6, 6, 0, 0]}
+                barSize={show2024 ? 18 : 30}
+                animationDuration={2000}
+              >
+                <LabelList dataKey="2025" content={renderCustomLabel} />
+              </Bar>
+            )}
 
+            {/* Meta Line - Made thicker and solid for better visibility */}
             <Line
-              name="Meta"
+              name="Meta 2025"
               type="monotone"
               dataKey="Meta"
               stroke="#10b981"
-              strokeWidth={3}
-              strokeDasharray="5 5"
-              dot={false}
-              filter="url(#glow)"
-              animationDuration={3000}
+              strokeWidth={4}
+              dot={{ r: 4, fill: '#10b981', strokeWidth: 0 }}
+              activeDot={{ r: 6, fill: '#10b981' }}
+              animationDuration={2000}
             >
               <LabelList dataKey="Meta" content={renderCustomLabel} />
             </Line>
@@ -245,8 +258,38 @@ const PremiumIndicatorChart = ({ indicator }) => {
 function App() {
   const [selectedSector, setSelectedSector] = useState(sectors[0] || 'Beneficiamento');
   const [showKPIs, setShowKPIs] = useState(false);
+  const [selectedYears, setSelectedYears] = useState(['2024', '2025']);
+  const [allIndicators, setAllIndicators] = useState(indicatorsData);
+  const [allSectors, setAllSectors] = useState(sectors);
+  const [isSyncing, setIsSyncing] = useState(false);
 
-  const filteredIndicators = indicatorsData.filter(ind => ind.sector === selectedSector);
+  const fetchData = async () => {
+    setIsSyncing(true);
+    try {
+      const response = await fetch('http://localhost:5000/api/data');
+      if (response.ok) {
+        const result = await response.json();
+        setAllIndicators(result.indicatorsData);
+        setAllSectors(result.sectors);
+        if (result.sectors.length > 0 && !result.sectors.includes(selectedSector)) {
+          setSelectedSector(result.sectors[0]);
+        }
+      }
+    } catch (error) {
+      console.error("Erro ao sincronizar dados:", error);
+    } finally {
+      setIsSyncing(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+    // Refresh every 5 minutes automatically
+    const interval = setInterval(fetchData, 300000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const filteredIndicators = allIndicators.filter(ind => ind.sector === selectedSector);
 
   return (
     <div className="min-h-screen bg-[#020617] text-slate-50 p-6 lg:p-12 font-sans selection:bg-primary selection:text-white">
@@ -277,9 +320,26 @@ function App() {
                 setSelectedSector(e.target.value);
                 setShowKPIs(false);
               }}
+              className="bg-transparent border-none text-[11px] font-black uppercase tracking-widest focus:ring-0 cursor-pointer outline-none min-w-[140px]"
+            >
+              {allSectors.map(s => <option key={s} value={s} className="bg-[#0f172a]">{s}</option>)}
+            </select>
+          </div>
+
+          <div className="flex items-center gap-3 px-6 py-2 border-r border-white/10">
+            <Calendar size={18} className="text-emerald-400" />
+            <select
+              value={selectedYears.join(',')}
+              onChange={(e) => {
+                const val = e.target.value;
+                if (val === 'ALL') setSelectedYears(['2024', '2025']);
+                else setSelectedYears([val]);
+              }}
               className="bg-transparent border-none text-[11px] font-black uppercase tracking-widest focus:ring-0 cursor-pointer outline-none"
             >
-              {sectors.map(s => <option key={s} value={s} className="bg-[#0f172a]">{s}</option>)}
+              <option value="ALL" className="bg-[#0f172a]">2024 + 2025</option>
+              <option value="2025" className="bg-[#0f172a]">Apenas 2025</option>
+              <option value="2024" className="bg-[#0f172a]">Apenas 2024</option>
             </select>
           </div>
           <button
@@ -290,13 +350,21 @@ function App() {
           </button>
         </div>
 
-        <div className="hidden 2xl:flex items-center gap-4 bg-white/5 px-6 py-3 rounded-2xl border border-white/5">
-          <Calendar size={18} className="text-primary-light" />
-          <div className="flex flex-col leading-none">
-            <span className="text-[10px] font-black text-slate-500 uppercase">Período Atual</span>
-            <span className="text-sm font-black text-white">DEZEMBRO 2025</span>
+        <button
+          onClick={fetchData}
+          disabled={isSyncing}
+          className={`group flex items-center gap-4 px-8 py-4 rounded-2xl border transition-all duration-300 ${isSyncing ? 'bg-slate-800 border-white/5 opacity-50' : 'bg-emerald-500/10 hover:bg-emerald-500/20 border-emerald-500/20'}`}
+        >
+          <div className={`p-2 bg-emerald-500 rounded-lg transition-transform duration-700 ${isSyncing ? 'animate-spin' : 'group-hover:rotate-180'}`}>
+            <RefreshCw size={18} className="text-white" />
           </div>
-        </div>
+          <div className="flex flex-col items-start leading-none">
+            <span className="text-[10px] font-black text-emerald-500/70 uppercase tracking-widest mb-1">Base de Dados</span>
+            <span className="text-sm font-black text-white group-active:scale-95 transition-transform">
+              {isSyncing ? 'SINCRONIZANDO...' : 'ATUALIZAR AGORA'}
+            </span>
+          </div>
+        </button>
       </header>
 
       {/* Content Area */}
@@ -308,6 +376,7 @@ function App() {
                 <PremiumIndicatorChart
                   key={`${selectedSector}-${index}`}
                   indicator={indicator}
+                  selectedYears={selectedYears}
                 />
               ))
             ) : (

@@ -8,85 +8,85 @@ export const indicatorsData = [
         "is_pct": false,
         "is_brl": false,
         "is_usd": false,
-        "meta": 1000.0,
+        "meta": 2000.0,
         "data": [
             {
                 "name": "Jan",
                 "2024": 1023.66,
                 "2025": 868.45,
-                "Meta": 1000.0
+                "Meta": 2000.0
             },
             {
                 "name": "Fev",
                 "2024": 597.15,
                 "2025": 883.35,
-                "Meta": 1000.0
+                "Meta": 2000.0
             },
             {
                 "name": "Mar",
                 "2024": 781.48,
                 "2025": 1310.27,
-                "Meta": 1000.0
+                "Meta": 2000.0
             },
             {
                 "name": "Abr",
                 "2024": 687.76,
                 "2025": 1055.47,
-                "Meta": 1000.0
+                "Meta": 2000.0
             },
             {
                 "name": "Mai",
                 "2024": 422.53,
                 "2025": 639.43,
-                "Meta": 1000.0
+                "Meta": 2000.0
             },
             {
                 "name": "Jun",
                 "2024": 528.04,
                 "2025": 500.06,
-                "Meta": 1000.0
+                "Meta": 2000.0
             },
             {
                 "name": "Jul",
                 "2024": 845.37,
                 "2025": 619.81,
-                "Meta": 1000.0
+                "Meta": 2000.0
             },
             {
                 "name": "Ago",
                 "2024": 519.25,
                 "2025": 612.53,
-                "Meta": 1000.0
+                "Meta": 2000.0
             },
             {
                 "name": "Set",
                 "2024": 770.47,
                 "2025": null,
-                "Meta": 1000.0
+                "Meta": 2000.0
             },
             {
                 "name": "Out",
                 "2024": 484.36,
                 "2025": null,
-                "Meta": 1000.0
+                "Meta": 2000.0
             },
             {
                 "name": "Nov",
                 "2024": null,
                 "2025": null,
-                "Meta": 1000.0
+                "Meta": 2000.0
             },
             {
                 "name": "Dez",
                 "2024": null,
                 "2025": null,
-                "Meta": 1000.0
+                "Meta": 2000.0
             },
             {
                 "name": "MÉD",
                 "2024": 666.007,
                 "2025": 811.17125,
-                "Meta": 1000.0
+                "Meta": 2000.0
             }
         ]
     },
@@ -6325,7 +6325,7 @@ export const indicatorsData = [
         "sector": "DP",
         "unit": "",
         "is_pct": false,
-        "is_brl": false,
+        "is_brl": true,
         "is_usd": false,
         "meta": 0.006,
         "data": [
