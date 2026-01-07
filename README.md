@@ -1,56 +1,31 @@
-# Projeto Granistone Intelligence - Documentação Final
+# Granistone Intelligence - Dashboard Premium
 
-Este documento resume o funcionamento e a estrutura dos dois dashboards desenvolvidos para a Granistone.
+Dashboard executivo premium desenvolvido em React para visualização de indicadores industriais e comerciais da Granistone.
 
-## 🚀 1. Dashboard Premium (React + Vite)
-Uma interface de altíssimo nível estético, focada em Business Intelligence executivo.
+## 🚀 Acesso Online
+O dashboard está hospedado e pode ser acessado publicamente através do link:
+👉 **[https://dashboard-granistone.vercel.app/](https://dashboard-granistone.vercel.app/)**
 
-### Funcionalidades:
-- **Sincronização em Tempo Real**: Conectado diretamente à planilha SharePoint via servidor de ponte (Flask).
-- **Filtro de Anos**: Seleção dinâmica entre 2024, 2025 ou Visão Comparativa.
-- **Filtro de Setores**: Menu suspenso inteligente que carrega os setores da planilha.
-- **Detecção Automática de Unidade**: Identifica R$, US$, % ou unidades nominais (m², kg, etc).
-- **Metas Visíveis**: Linha de meta 2025 reforçada e com rótulos de valores.
-- **Modo KPI vs Gráfico**: Alternância rápida entre visão detalhada e métricas consolidadas.
+## �️ Segurança e Acesso
+Para garantir que os dados sejam visualizados apenas por colaboradores autorizados, o portal possui uma barreira de segurança:
+*   **Chave de Acesso**: `granistone2026`
+*   **Restrição**: O sistema utiliza cache local para manter a sessão ativa após o primeiro acesso bem-sucedido.
 
-### Como Rodar:
-1. Abra um terminal e inicie o servidor de dados:
-   ```bash
-   cd dashboard-granistone
-   python server.py
-   ```
-2. Abra outro terminal e inicie o dashboard:
-   ```bash
-   npm run dev
-   ```
-3. Acesse: `http://localhost:5173`
+## 📊 Funcionalidades
+*   **Sincronização em Tempo Real**: Conexão direta com a planilha `Painel da RMR v.2.xlsx` no SharePoint.
+*   **Filtros Dinâmicos**: Alternância entre setores (Comercial, Beneficiamento, etc.) e anos (2024, 2025).
+*   **Visualização de Metas**: Linha de meta mensal projetada sobre o realizado.
+*   **Comparativo de Performance**: Cálculo automático de variação percentual entre as médias de 2024 e 2025.
 
----
+## 🏗️ Arquitetura
+1.  **Frontend (Vercel)**: Interface em React + Tailwind CSS + Recharts.
+2.  **Backend (Render/Local)**: Servidor em Python (Flask) que processa os dados brutos do SharePoint e os limpa para o dashboard.
+3.  **Base de Dados**: Microsoft SharePoint (Excel).
 
-## 📊 2. Dashboard BI (Streamlit)
-Uma ferramenta ágil e analítica, ideal para consumo rápido de dados operacionais.
-
-### Funcionalidades:
-- **Integração SharePoint**: Botão de atualização manual com limpeza de cache.
-- **Visualização Plotly**: Gráficos interativos com tooltips detalhadas.
-- **Formatação de Moedas**: Suporte a R$ e US$ automático.
-- **Sidebar Retrátil**: Menu de navegação lateral para foco total nos dados.
-
-### Como Rodar:
-1. Inicie o sistema Streamlit:
-   ```bash
-   cd granistone-streamlit
-   streamlit run streamlit_app.py
-   ```
-2. Acesse: `http://localhost:8501`
+## 🛠️ Como rodar localmente
+1.  Instale as dependências: `npm install`
+2.  Inicie o servidor de dados: `python server.py`
+3.  Inicie o dashboard: `npm run dev`
 
 ---
-
-## 📂 Repositórios e Códigos
-- **Git (Local)**: Todos os arquivos foram commitados com as versões finais em seus respectivos diretórios.
-- **Scripts de Sincronização**: Localizados em `server.py` (React) e `streamlit_app.py`.
-
----
-
-**Desenvolvido por Antigravity (Google Deepmind)**
-*Data: 07 de Janeiro de 2026*
+*Desenvolvido pela Divisão de Controle de Produção - Granistone Industrial*
